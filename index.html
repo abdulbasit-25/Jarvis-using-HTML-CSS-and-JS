@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jarvis AI Interface</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <video autoplay loop muted id="background-video">
+  <source src="Jarvis2.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+    <div id="jarvis-container">
+        <div id="jarvis-header">
+            <h1>Jarvis</h1>
+            <p>How can I assist you today?</p>
+        </div>
+        
+        <div id="jarvis-output">
+            <div id="output-area"></div>
+        </div>
+        
+        <div id="jarvis-input">
+            <input type="text" id="user-input" placeholder="Type a command..." />
+            <button onclick="processCommand()">Send</button>
+        </div>
+    </div>
+<audio id="hello-sound" src="jarvis-147563.mp3" preload="auto"></audio>
+<audio id="AtyourService" src="JARVIS-ATyourservice.mp3" preload="auto"></audio>
+<audio id="Introduction" src="JARVIS-Introduction.mp3" preload="auto"></audio>
+<audio id="Batterylow" src="JARVIS-Batterylow.mp3" preload="auto"></audio>
+<audio id="reboot" src="reboot.mp3" preload="auto"></audio>
+
+
+
+    <script src="Cursor.js"></script>
+
+    <script src="script.js"></script>
+</body>
+</html>
