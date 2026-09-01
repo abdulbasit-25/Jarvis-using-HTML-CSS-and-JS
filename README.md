@@ -1,126 +1,31 @@
-Here's a more polished and visually appealing `README.md` file with headings, sections, and emojis for better readability:
+# JARVIS HUD Interface
 
----
+A rebuilt, self-contained JARVIS-style assistant UI: `index.html`, `styles.css`, `script.js`.
 
-# 💻 Jarvis using HTML, CSS, and JS 🤖
+## What's new vs. the original
+- **Voice in & out** — mic button uses the browser's Speech Recognition API; every reply is spoken with Speech Synthesis (toggle with "mute"/"unmute" or by clicking the ◐ icon doesn't mute, only switches palette — say "mute" to silence voice).
+- **Real weather** — "weather in <city>" hits the free Open-Meteo API, no key required.
+- **Calculator** — "calculate 12*7+3".
+- **Notes** — "note: pick up dry cleaning", "show notes", "clear notes" (saved in localStorage, listed live in the right-hand panel).
+- **Timers** — "set a timer for 5 minutes" fires a spoken alert when it's done.
+- **Live system readouts** — clock, date, session uptime, and real battery level (where the browser exposes it).
+- **Command history** — ↑ / ↓ in the input field cycles through what you've typed.
+- **Two-tone HUD palette** — click ◐ top-right to swap cyan/amber accent.
+- **Responsive** — collapses to a single column on narrow screens.
+- Still hooks into your original `assets/audio/*.mp3` files if you drop them into the `assets/audio` folder — they're optional and fail silently if missing, since speech synthesis is now the primary voice.
 
-## 📑 Table of Contents
-1. [Project Overview](#project-overview)
-2. [🚀 Technologies Used](#technologies-used)
-3. [📥 Installation](#installation)
-4. [📁 File Structure](#file-structure)
-5. [💡 How to Use](#how-to-use)
-6. [🔍 Preview](#preview)
-7. [🚀 Future Improvements](#future-improvements)
-8. [📄 License](#license)
-9. [📧 Contact](#contact)
+## Commands
+time · date · weather in `<city>` · calculate `<expr>` · note: `<text>` · show notes · clear notes ·
+set a timer for `<n>` minutes · joke · battery · mute / unmute · search `<query>` · open music ·
+news · reboot · shutdown · clear · help
 
----
+## Running it
+Just open `index.html` in a browser — no build step or server needed. Voice recognition requires
+Chrome/Edge (or another browser with Web Speech API support) and a mic permission grant.
 
-## 📝 Project Overview
-
-"**Jarvis using HTML, CSS, and JS**" is a **basic version of an AI assistant interface** built using front-end technologies. Inspired by the concept of AI assistants like Jarvis, this project features an interactive user interface that responds to text commands and offers sound effects and dynamic cursors.
-
-### Key Features:
-- **Floating UI**: A sleek Jarvis container with interactive animations.
-- **Futuristic Effects**: Holographic style and animations for input/output areas.
-- **Dynamic Cursor**: Custom cursor that changes based on interactions with buttons, links, and images.
-- **Sound Effects**: Interactive sounds like "Jarvis at your service" for a realistic experience.
-
----
-
-## 🚀 Technologies Used
-
-- **HTML**: Structure and layout of the user interface.
-- **CSS**: Styling, animations, and hover effects for a futuristic design.
-- **JavaScript**: Handling user interactions, input/output processing, and dynamic updates.
-- **Cursor.js**: Custom cursor behavior that enlarges and changes colors on hover.
-- **Audio Files**: Interactive sounds that provide feedback to the user.
-
----
-
-## 📥 Installation
-
-Follow these simple steps to run the project on your local machine:
-
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/abdulbasit-25/Jarvis-using-HTML-CSS-and-JS.git
-   ```
-
-2. **Navigate to the project directory**:
-   ```bash
-   cd Jarvis-using-HTML-CSS-and-JS
-   ```
-
-3. **Open `index.html`** in your browser to view the Jarvis interface:
-   ```bash
-   open index.html
-   ```
-   Alternatively, you can open it directly in any browser.
-
----
-
-## 📁 File Structure
-
-Here’s a quick look at the project’s structure:
-
-```
-Jarvis-using-HTML-CSS-and-JS/
-│
-├── index.html            # The main HTML file (structure and elements)
-├── styles.css            # Styling and animations
-├── script.js             # JavaScript for dynamic behavior
-├── Cursor.js             # Custom cursor behavior
-├── audio/                # Folder with audio feedback files
-│   ├── jarvis-147563.mp3
-│   ├── JARVIS-ATyourservice.mp3
-│   ├── JARVIS-Introduction.mp3
-│   ├── JARVIS-Batterylow.mp3
-│   └── reboot.mp3
-```
-
----
-
-## 💡 How to Use
-
-1. **Interact with Jarvis**:
-   - Type commands in the input field and press **Send** to receive a response.
-   - The **output area** will display Jarvis’s response.
-
-2. **Audio Feedback**:
-   - Jarvis will respond with interactive audio, such as "Jarvis at your service" when a command is received.
-
-3. **Dynamic Cursor**:
-   - The cursor will change size and color when hovering over interactive elements like buttons, links, and images.
-
----
-
-## 🔍 Preview
-
-Here's a preview of how the Jarvis interface looks:
-
-index.html
-
----
-
-## 🚀 Future Improvements
-
-- **🎙 Voice Command Integration**: Add voice recognition for processing spoken commands.
-- **🧠 AI Features**: Implement advanced AI capabilities, like weather updates, reminders, etc.
-- **🎨 UI Customization**: Enable users to personalize the interface with different themes or settings.
-
----
-
-## 📄 License
-
-This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for more details.
-
----
-
-## 📧 Contact
-
-Feel free to reach out with any questions or feedback!
-
-- **GitHub**: [https://github.com/abdulbasit-25](https://github.com/abdulbasit-25)
-- **Email**: abdulbasit.alpha25@gmail.com
+## Bringing back your original assets
+Drop your files into:
+- `assets/audio/` — same filenames as before (jarvis-147563.mp3, JARVIS-ATyourservice.mp3, etc.)
+- `assets/video/` and `assets/images/` — kept as empty folders here; the new design uses a CSS/canvas
+  backdrop instead of a background video by default, but you can re-add `#background-video` in
+  `index.html` if you'd like the video back.
