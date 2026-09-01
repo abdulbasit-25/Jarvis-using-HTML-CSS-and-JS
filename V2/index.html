@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>J.A.R.V.I.S — AI Interface</title>
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Share+Tech+Mono&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+    <!-- ===== BOOT SEQUENCE ===== -->
+    <div id="boot-screen">
+        <div class="boot-reactor">
+            <div class="boot-ring br1"></div>
+            <div class="boot-ring br2"></div>
+            <div class="boot-core"></div>
+        </div>
+        <pre id="boot-log"></pre>
+        <button id="boot-btn">▸ INITIALIZE J.A.R.V.I.S</button>
+    </div>
+
+    <!-- ===== BACKGROUND ===== -->
+    <video autoplay loop muted playsinline id="background-video">
+        <source src="assets/video/Jarvis2.mp4" type="video/mp4" />
+    </video>
+    <div class="scanlines"></div>
+    <div class="vignette"></div>
+
+    <!-- ===== MAIN INTERFACE ===== -->
+    <div id="jarvis-container">
+        <header id="jarvis-header">
+            <div class="header-top">
+                <div class="reactor">
+                    <div class="reactor-ring rr1"></div>
+                    <div class="reactor-ring rr2"></div>
+                    <div class="reactor-core"></div>
+                </div>
+                <div class="header-title">
+                    <h1>J.A.R.V.I.S</h1>
+                    <p>Just A Rather Very Intelligent System</p>
+                </div>
+            </div>
+            <div class="status-bar">
+                <span id="status-dot">● SYSTEM ONLINE</span>
+                <span id="clock">--:--:--</span>
+                <span id="date-display">--/--/----</span>
+                <span id="battery-status">⚡ BATT --%</span>
+            </div>
+        </header>
+
+        <div id="jarvis-output">
+            <div id="output-area"></div>
+        </div>
+
+        <div id="suggestion-bar"></div>
+
+        <div id="jarvis-input">
+            <button id="mic-btn" title="Voice command">🎙</button>
+            <input type="text" id="user-input" placeholder="Type a command, sir..." autocomplete="off" />
+            <button id="voice-toggle" title="Toggle Jarvis voice">🔊</button>
+            <button id="send-btn">SEND</button>
+        </div>
+    </div>
+
+    <!-- ===== AUDIO ===== -->
+    <audio id="hello-sound" src="assets/audio/jarvis-147563.mp3" preload="auto"></audio>
+    <audio id="AtyourService" src="assets/audio/JARVIS-ATyourservice.mp3" preload="auto"></audio>
+    <audio id="Introduction" src="assets/audio/JARVIS-Introduction.mp3" preload="auto"></audio>
+    <audio id="Batterylow" src="assets/audio/JARVIS-Batterylow.mp3" preload="auto"></audio>
+    <audio id="reboot" src="assets/audio/reboot.mp3" preload="auto"></audio>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
