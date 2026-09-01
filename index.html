@@ -1,43 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jarvis AI Interface</title>
+    <title>J.A.R.V.I.S — Interface</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
-    <video autoplay loop muted id="background-video">
-  <source src="Jarvis2.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+    <canvas id="grid-canvas"></canvas>
 
-    <div id="jarvis-container">
-        <div id="jarvis-header">
-            <h1>Jarvis</h1>
-            <p>How can I assist you today?</p>
-        </div>
-        
-        <div id="jarvis-output">
-            <div id="output-area"></div>
-        </div>
-        
-        <div id="jarvis-input">
-            <input type="text" id="user-input" placeholder="Type a command..." />
-            <button onclick="processCommand()">Send</button>
-        </div>
+    <div id="jarvis-shell">
+
+        <!-- ============ TOP BAR ============ -->
+        <header id="topbar">
+            <div class="brand">
+                <span class="brand-mark">J.A.R.V.I.S</span>
+                <span class="brand-sub">Just A Rather Very Intelligent System</span>
+            </div>
+            <div class="status-cluster">
+                <div class="status-item">
+                    <span class="status-dot" id="status-dot"></span>
+                    <span id="status-label">STANDBY</span>
+                </div>
+                <div class="status-item" id="clock-item">
+                    <span id="clock">--:--:--</span>
+                </div>
+                <button id="theme-toggle" title="Switch palette">◐</button>
+            </div>
+        </header>
+
+        <!-- ============ MAIN GRID ============ -->
+        <main id="main-grid">
+
+            <!-- LEFT: system readouts -->
+            <aside id="panel-left" class="hud-panel">
+                <div class="panel-title">SYSTEM</div>
+                <ul class="readout-list">
+                    <li><span>DATE</span><b id="readout-date">—</b></li>
+                    <li><span>UPTIME</span><b id="readout-uptime">00:00:00</b></li>
+                    <li><span>BATTERY</span><b id="readout-battery">—</b></li>
+                    <li><span>VOICE OUT</span><b id="readout-voice">ON</b></li>
+                    <li><span>MIC</span><b id="readout-mic">IDLE</b></li>
+                </ul>
+
+                <div class="panel-title">QUICK COMMANDS</div>
+                <div class="quick-grid">
+                    <button class="quick-btn" data-cmd="what time is it">Time</button>
+                    <button class="quick-btn" data-cmd="what's the date">Date</button>
+                    <button class="quick-btn" data-cmd="weather in Rawalpindi">Weather</button>
+                    <button class="quick-btn" data-cmd="tell me a joke">Joke</button>
+                    <button class="quick-btn" data-cmd="show notes">Notes</button>
+                    <button class="quick-btn" data-cmd="help">Help</button>
+                </div>
+            </aside>
+
+            <!-- CENTER: reactor + conversation -->
+            <section id="panel-center">
+                <div id="reactor-wrap">
+                    <div id="reactor">
+                        <div class="ring ring-1"></div>
+                        <div class="ring ring-2"></div>
+                        <div class="ring ring-3"></div>
+                        <div id="reactor-core"></div>
+                    </div>
+                    <div id="waveform">
+                        <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                    </div>
+                </div>
+
+                <div id="jarvis-output">
+                    <div id="output-area">
+                        <div class="jarvis-response boot-line">JARVIS interface initialized. Say <em>"hey"</em> or type
+                            a command to begin.</div>
+                    </div>
+                </div>
+
+                <div id="jarvis-input">
+                    <button id="mic-btn" title="Voice input">🎙</button>
+                    <input type="text" id="user-input" placeholder="Type a command, sir…" autocomplete="off" />
+                    <button id="send-btn" title="Send">➤</button>
+                </div>
+            </section>
+
+            <!-- RIGHT: log / notes -->
+            <aside id="panel-right" class="hud-panel">
+                <div class="panel-title">ACTIVITY LOG</div>
+                <ul id="activity-log" class="activity-list"></ul>
+
+                <div class="panel-title">NOTES <span id="notes-count">(0)</span></div>
+                <ul id="notes-list" class="notes-list">
+                    <li class="notes-empty">No notes yet. Try "note: pick up dry cleaning".</li>
+                </ul>
+            </aside>
+
+        </main>
     </div>
-<audio id="hello-sound" src="jarvis-147563.mp3" preload="auto"></audio>
-<audio id="AtyourService" src="JARVIS-ATyourservice.mp3" preload="auto"></audio>
-<audio id="Introduction" src="JARVIS-Introduction.mp3" preload="auto"></audio>
-<audio id="Batterylow" src="JARVIS-Batterylow.mp3" preload="auto"></audio>
-<audio id="reboot" src="reboot.mp3" preload="auto"></audio>
 
-
-
-    <script src="Cursor.js"></script>
+    <!-- Optional local audio hooks — safe to remove or repopulate with assets/audio/* -->
+    <audio id="hello-sound" src="assets/audio/jarvis-147563.mp3" preload="none"></audio>
+    <audio id="AtyourService" src="assets/audio/JARVIS-ATyourservice.mp3" preload="none"></audio>
+    <audio id="Introduction" src="assets/audio/JARVIS-Introduction.mp3" preload="none"></audio>
+    <audio id="Batterylow" src="assets/audio/JARVIS-Batterylow.mp3" preload="none"></audio>
+    <audio id="reboot" src="assets/audio/reboot.mp3" preload="none"></audio>
 
     <script src="script.js"></script>
 </body>
+
 </html>
